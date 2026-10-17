@@ -17,7 +17,7 @@ export class UserController {
 
   @Post()
   @UseInterceptors(FileInterceptor("file"))
-  public async registerUserController(@Body() body: CreateUserDto, @Res({ passthrough: true }) response: Response, @UploadedFile() file?: Express.Multer.File): Promise<{ message: string }> {
+  public async registerUser(@Body() body: CreateUserDto, @Res({ passthrough: true }) response: Response, @UploadedFile() file?: Express.Multer.File): Promise<{ message: string }> {
     const user = await this.registerUserService.execute(body, file);
 
     const accessToken = await this.jwtRepository.generateAccessToken({ sub: user.getId(), email: user.getEmail().getValue() });

@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 import { APP_FILTER } from "@nestjs/core";
 import { AuthModule } from "../auth/auth.module";
 import { UserController } from "./adapter/in/user.controller";
@@ -10,7 +10,7 @@ import { InvalidPhoneFilter } from "./infrastructure/filter/invalid-phone.filter
 import { UserAlreadyExistsFilter } from "./infrastructure/filter/user-already-exists.filter";
 
 @Module({
-  imports: [AuthModule],
+  imports: [forwardRef(() => AuthModule)],
   providers: [
     RegisterUserService,
     {

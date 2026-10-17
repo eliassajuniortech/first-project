@@ -17,13 +17,13 @@ export class JwtRepositoryAdapter implements JwtRepository {
   public async generateAccessToken(payload: Payload): Promise<string> {
     return await this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>("ACCESS_TOKEN_SECRET"),
-      expiresIn: this.configService.get<number>("ACCESS_TOKEN_EXPIRES_IN"),
+      expiresIn: Number(this.configService.get<number>("ACCESS_TOKEN_EXPIRES_IN")),
     });
   }
   public async generateRefreshToken(payload: Payload): Promise<string> {
     return await this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>("REFRESH_TOKEN_SECRET"),
-      expiresIn: this.configService.get<number>("REFRESH_TOKEN_EXPIRES_IN"),
+      expiresIn: Number(this.configService.get<number>("REFRESH_TOKEN_EXPIRES_IN")),
     });
   }
 }
