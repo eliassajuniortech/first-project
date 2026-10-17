@@ -1,5 +1,5 @@
 export class ImageUploadError extends Error {
-  constructor(message = "Failed to upload the image.") {
+  constructor(message = "Falha ao enviar a imagem.") {
     super(message);
     this.name = "ImageUploadError";
   }

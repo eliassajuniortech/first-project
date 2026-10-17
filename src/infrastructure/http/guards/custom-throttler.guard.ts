@@ -4,7 +4,7 @@ import { RateLimitException } from "../exceptions/rate-limit.exception";
 
 @Injectable()
 export class CustomThrottlerGuard extends ThrottlerGuard {
-  protected async throwThrottlingException(): Promise<void> {
+  public async throwThrottlingException(): Promise<void> {
     throw new RateLimitException();
   }
 }

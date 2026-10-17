@@ -3,10 +3,10 @@ import { HashingRepository } from "../../../../infrastructure/security/hashing/h
 import { UploadRepository } from "../../../../infrastructure/upload/upload.repository";
 import { UserRepository } from "../../domain/repositories/user.repository";
 import { User } from "../../domain/user.entity";
-import { Email } from "../../domain/value-objects/email.vo";
-import { Phone } from "../../domain/value-objects/phone.vo";
+import { Email } from "../../domain/values-objects/email.vo";
+import { Phone } from "../../domain/values-objects/phone.vo";
 import { UserAlreadyExistsError } from "../errors/user-already-exists.error";
-import { CreateUserInput } from "./types/create-user.type";
+import { CreateUserInput } from "../types/create-user.type";
 
 @Injectable()
 export class RegisterUserService {

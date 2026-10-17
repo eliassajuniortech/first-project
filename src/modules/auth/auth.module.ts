@@ -2,12 +2,12 @@ import { forwardRef, Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { JwtModule } from "@nestjs/jwt";
 import { UserModule } from "../user/user.module";
-import { AuthController } from "./adapter/in/auth.controller";
+import { AuthController } from "./adapter/auth.controller";
 import { LoginService } from "./application/services/login.service";
 import { JwtRepository } from "./domain/repositories/jwt.repository";
 import { JwtRepositoryAdapter } from "./infrastructure/jwt/jwt.repository.adapter";
-import { AccessTokenStrategy } from "./infrastructure/strategy/access-token.strategy";
-import { RefreshTokenStrategy } from "./infrastructure/strategy/refresh-token.strategy";
+import { AccessTokenStrategy } from "./infrastructure/strategies/access-token.strategy";
+import { RefreshTokenStrategy } from "./infrastructure/strategies/refresh-token.strategy";
 
 @Module({
   imports: [

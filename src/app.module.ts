@@ -15,7 +15,7 @@ import { UserModule } from "./modules/user/user.module";
     DatabaseModule,
     SecurityModule,
     UploadModule,
-    ThrottlerModule.forRoot([{ ttl: 60_000, limit: 50 }]),
+    ThrottlerModule.forRoot([{ limit: 50, ttl: 60_000 }]),
     ConfigModule.forRoot({
       isGlobal: true,
     }),

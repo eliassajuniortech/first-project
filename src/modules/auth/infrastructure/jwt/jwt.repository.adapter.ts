@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { JwtRepository } from "../../domain/repositories/jwt.repository";
-import { Payload } from "../../domain/repositories/types/payload.type";
+import { Payload } from "../../domain/types/payload.type";
 
 @Injectable()
 export class JwtRepositoryAdapter implements JwtRepository {

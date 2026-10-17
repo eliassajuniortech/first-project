@@ -1,5 +1,5 @@
-import { Email } from "./value-objects/email.vo";
-import { Phone } from "./value-objects/phone.vo";
+import { Email } from "./values-objects/email.vo";
+import { Phone } from "./values-objects/phone.vo";
 
 export class User {
   private readonly id: string;

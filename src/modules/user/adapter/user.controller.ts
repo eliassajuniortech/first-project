@@ -1,9 +1,10 @@
 import { Body, Controller, Post, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { FileInterceptor } from "@nestjs/platform-express";
 import type { Response } from "express";
-import { JwtRepository } from "../../../auth/domain/repositories/jwt.repository";
-import { RegisterUserService } from "../../application/services/register-user.service";
+import { JwtRepository } from "../../auth/domain/repositories/jwt.repository";
+import { RegisterUserService } from "../application/services/register-user.service";
 import { CreateUserDto } from "./dtos/create-user.dto";
+import { Message } from "./types/message.type";
 
 @Controller("user")
 export class UserController {
@@ -17,7 +18,7 @@ export class UserController {
 
   @Post()
   @UseInterceptors(FileInterceptor("file"))
-  public async registerUser(@Body() body: CreateUserDto, @Res({ passthrough: true }) response: Response, @UploadedFile() file?: Express.Multer.File): Promise<{ message: string }> {
+  public async registerUser(@Body() body: CreateUserDto, @Res({ passthrough: true }) response: Response, @UploadedFile() file?: Express.Multer.File): Promise<Message> {
     const user = await this.registerUserService.execute(body, file);
 
     const accessToken = await this.jwtRepository.generateAccessToken({ sub: user.getId(), email: user.getEmail().getValue() });

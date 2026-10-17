@@ -3,7 +3,8 @@ import { HashingRepository } from "../../../../infrastructure/security/hashing/h
 import { UserRepository } from "../../../user/domain/repositories/user.repository";
 import { JwtRepository } from "../../domain/repositories/jwt.repository";
 import { InvalidCredentialsError } from "../errors/invalid-credentials.error";
-import { LoginInput } from "./types/login.type";
+import { Login } from "../types/login.type";
+import { Tokens } from "../types/tokens.type";
 
 @Injectable()
 export class LoginService {
@@ -17,7 +18,7 @@ export class LoginService {
     this.hashingRepository = hashingRepository;
   }
 
-  public async execute(input: LoginInput): Promise<{ accessToken: string; refreshToken: string }> {
+  public async execute(input: Login): Promise<Tokens> {
     const user = await this.userRepository.findUserByEmail(input.email);
     if (!user) {
       throw new InvalidCredentialsError();

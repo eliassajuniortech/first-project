@@ -3,7 +3,8 @@ import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { Request } from "express";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { Payload } from "../../domain/repositories/types/payload.type";
+import { Payload } from "../../domain/types/payload.type";
+import { AuthenticatedUser } from "../types/authenticated-user.type";
 
 @Injectable()
 export class AccessTokenStrategy extends PassportStrategy(Strategy, "access_token") {
@@ -19,7 +20,7 @@ export class AccessTokenStrategy extends PassportStrategy(Strategy, "access_toke
     });
   }
 
-  public async validate(payload: Payload): Promise<{ id: string; email: string }> {
+  public async validate(payload: Payload): Promise<AuthenticatedUser> {
     return { id: payload.sub, email: payload.email };
   }
 }

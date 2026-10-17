@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "../../../../../infrastructure/database/database.service";
-import { UserRepository } from "../../../domain/repositories/user.repository";
-import { User } from "../../../domain/user.entity";
-import { Email } from "../../../domain/value-objects/email.vo";
-import { Phone } from "../../../domain/value-objects/phone.vo";
+import { DatabaseService } from "../../../../infrastructure/database/database.service";
+import { UserRepository } from "../../domain/repositories/user.repository";
+import { User } from "../../domain/user.entity";
+import { Email } from "../../domain/values-objects/email.vo";
+import { Phone } from "../../domain/values-objects/phone.vo";
 
 @Injectable()
 export class UserRepositoryAdapter implements UserRepository {
